@@ -2,9 +2,20 @@ import React, { Component } from 'react';
 import {
   Form, Col, Button,
 } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
-const REGIONS: string[] = [
-  'BR', 'EUW', 'EUNE', 'JP', 'KR', 'LAN', 'LAS', 'NA', 'OCE', 'RU', 'TR',
+const REGIONS = [
+  { label: 'BR', value: 'br1' },
+  { label: 'RU', value: 'ru' },
+  { label: 'KR', value: 'kr' },
+  { label: 'OCE', value: 'oc1' },
+  { label: 'JP', value: 'jp1' },
+  { label: 'NA', value: 'na1' },
+  { label: 'EUN', value: 'eun1' },
+  { label: 'EUW', value: 'euw2' },
+  { label: 'TUR', value: 'tr1' },
+  { label: 'LAN', value: 'la1' },
+  { label: 'LAS', value: 'la2' },
 ];
 
 interface State {
@@ -19,18 +30,18 @@ interface Props {
 export default class InputSearch extends Component<Props, State> {
   initialState = {
     summonerName: undefined,
-    region: 'BR',
+    region: 'br1',
   }
 
   constructor(props: Props) {
     super(props);
     this.state = {
       summonerName: 'HendrikStark',
-      region: 'BR',
+      region: 'br1',
     };
   }
 
-  renderOptions = () => REGIONS.map((r) => <option key={r} value={r}>{r}</option>)
+  renderOptions = () => REGIONS.map((r) => <option key={r.value} value={r.value}>{r.label}</option>)
 
   handleChangeSummoner = (e: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({ summonerName: e.target.value });
@@ -41,7 +52,9 @@ export default class InputSearch extends Component<Props, State> {
   }
 
   handleClickSearch = () => {
-    console.log(this.state);
+    // const { summonerName, region } = this.state;
+    // const url = `${API_PROXY}https://${region}.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerName}?api_key=${API_KEY}`;
+    // axios.get(url).then((res) => console.log(res.data));
   }
 
   render() {
@@ -64,9 +77,11 @@ export default class InputSearch extends Component<Props, State> {
           </Col>
 
           <Col lg={1}>
-            <Button variant="primary" onClick={() => this.handleClickSearch}>
-              <i className="fa fa-search" />
-            </Button>
+            <Link to={`/profile/${region}/${summonerName}`}>
+              <Button variant="primary">
+                <i className="fa fa-search" />
+              </Button>
+            </Link>
           </Col>
         </Form.Row>
       </Form>
