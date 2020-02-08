@@ -18,18 +18,19 @@
   align-items: center;
 }
 
+.summoner-icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .summoner-name {
   font-size: 3em;
   color: #fff;
   margin-left: 2em;
 }
 
-.icon-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
 
 .summoner-level {
   color: white;
@@ -42,15 +43,22 @@
 
 }
 
-.champion-item {
+
+.champion-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.champion {
   width: 120px;
-  height: 160px;
+  height: 130px;
   border: 1px solid #ccc;
   background-color: #Dddd;
   display: flex;
   text-align: center;
   justify-content: center;
-  margin-bottom: 10px;
   margin-right: 10px;
 }
 
@@ -80,7 +88,8 @@
 }
 
 .champion-banner {
-  margin-top: -20px;
-  width: 50px;
-  height: 50px;
+  width: 45x;
+  height: 30px;
+  margin-bottom: 5px;
+  margin-right: 10px;
 }

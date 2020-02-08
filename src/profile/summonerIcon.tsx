@@ -18,7 +18,7 @@ export default (props: Props) => {
 
   return (
 
-    <div className="icon-container">
+    <div className="summoner-icon-container">
       {getProfileIcon()}
       <div className="summoner-level">{summonerLevel}</div>
     </div>
