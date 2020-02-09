@@ -43,6 +43,9 @@
 
 }
 
+.champion-grid-title {
+  color: #555;
+}
 
 .champion-container {
   display: flex;
@@ -56,7 +59,7 @@
   height: 130px;
   border: 1px solid #ccc;
   background-color: #Dddd;
-  display: flex;
+  flex-direction: column;
   text-align: center;
   justify-content: center;
   margin-right: 10px;
