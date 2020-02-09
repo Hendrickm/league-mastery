@@ -1,9 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component, ChangeEvent } from 'react';
 import axios from 'axios';
 import ChampionList from './championList';
 
 import './profile.css';
+import { Champion } from '../utils/types';
+
+import { CHAMPION_NAMES } from '../assets/data';
 import { API_PROXY } from '../env/enviroments';
+
 import Header from './header';
 
 interface Props {
@@ -19,18 +23,6 @@ interface State {
   summonerLevel: number,
   id: string,
   championList: Array<Champion>;
-}
-
-interface Champion {
-  championId: number,
-  championLevel: number,
-  championPoints: number,
-  lastPlayTime: string,
-  championPointsSinceLastLevel: number,
-  championPointsUntilNextLevel: number,
-  chestGranted: boolean,
-  tokensEarned: 0,
-  summonerId: string
 }
 
 export default class Profile extends Component<Props, State> {
@@ -66,6 +58,22 @@ export default class Profile extends Component<Props, State> {
     });
   }
 
+  handleSelectSort = (e: ChangeEvent<HTMLInputElement>) => {
+    const sort: string = e.target.value;
+    const { championList } = this.state;
+    let sortedChampionList = [];
+    if (sort === 'name') {
+      sortedChampionList = championList.sort((a, b) => (
+        this.getChampionName(a.championId).localeCompare(this.getChampionName(b.championId))));
+    } else {
+      sortedChampionList = championList
+        .sort((a, b) => ((a[sort] > b[sort]) ? -1 : 1));
+    }
+    this.setState({ championList: sortedChampionList });
+  }
+
+  getChampionName = (championId: number) => CHAMPION_NAMES.find((c) => c.id === championId)?.name || '' ;
+
   render() {
     const {
       profileIconId, name, summonerLevel, championList,
@@ -77,7 +85,7 @@ export default class Profile extends Component<Props, State> {
           name={name}
           summonerLevel={summonerLevel}
         />
-        <ChampionList championList={championList} />
+        <ChampionList championList={championList} handleSelectSort={this.handleSelectSort} />
 
       </div>
     );

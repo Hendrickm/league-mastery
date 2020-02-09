@@ -2,21 +2,9 @@ import React from 'react';
 
 import ChampionBanner from './championBanner';
 
-import CHAMPION_KEYS from '../assets/championKeys';
-import CHAMPION_NAME from '../assets/championName';
+import { CHAMPION_KEYS, CHAMPION_NAMES } from '../assets/data';
 
-
-interface Champion {
-  championId: number,
-  championLevel: number,
-  championPoints: number,
-  lastPlayTime: string,
-  championPointsSinceLastLevel: number,
-  championPointsUntilNextLevel: number,
-  chestGranted: boolean,
-  tokensEarned: 0,
-  summonerId: string
-}
+import { Champion } from '../utils/types';
 
 interface Props {
   champion: Champion;
@@ -27,7 +15,7 @@ export default (props: Props) => {
 
   const getChampionKey = () => CHAMPION_KEYS.find((c) => c.id === championId)?.key;
 
-  const getChampionName = () => CHAMPION_NAME.find((c) => c.id === championId)?.name;
+  const getChampionName = () => CHAMPION_NAMES.find((c) => c.id === championId)?.name;
 
   const getChampionClass = () => {
     let classes = 'champion';

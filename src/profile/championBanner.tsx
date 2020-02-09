@@ -17,22 +17,14 @@ export default (props: Props) => {
 
   const getChampionBanner = () => {
     switch (championLevel) {
-      case 1:
-        return banner1;
-      case 2:
-        return banner2;
-      case 3:
-        return banner3;
-      case 4:
-        return banner4;
-      case 5:
-        return banner5;
-      case 6:
-        return banner6;
-      case 7:
-        return banner7;
-      default:
-        return '';
+      case 1: return banner1;
+      case 2: return banner2;
+      case 3: return banner3;
+      case 4: return banner4;
+      case 5: return banner5;
+      case 6: return banner6;
+      case 7: return banner7;
+      default: return '';
     }
   };
 

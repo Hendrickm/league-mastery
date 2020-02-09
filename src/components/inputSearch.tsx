@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, ChangeEvent } from 'react';
 import {
   Form, Col, Button,
 } from 'react-bootstrap';
@@ -43,11 +43,11 @@ export default class InputSearch extends Component<Props, State> {
 
   renderOptions = () => REGIONS.map((r) => <option key={r.value} value={r.value}>{r.label}</option>)
 
-  handleChangeSummoner = (e: React.ChangeEvent<HTMLInputElement>) => {
+  handleChangeSummoner = (e: ChangeEvent<HTMLInputElement>) => {
     this.setState({ summonerName: e.target.value });
   }
 
-  handleChangeRegion = (e: React.ChangeEvent<HTMLInputElement>) => {
+  handleChangeRegion = (e: ChangeEvent<HTMLInputElement>) => {
     this.setState({ region: e.target.value });
   }
 

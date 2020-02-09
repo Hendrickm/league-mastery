@@ -43,6 +43,11 @@
 
 }
 
+.champion-grid-header {
+  display: flex;
+  justify-content: space-between
+}
+
 .champion-grid-title {
   color: #555;
 }
@@ -55,8 +60,8 @@
 }
 
 .champion {
-  width: 120px;
-  height: 130px;
+  width: 100px;
+  height: 110px;
   border: 1px solid #ccc;
   background-color: #Dddd;
   flex-direction: column;
@@ -86,8 +91,8 @@
 }
 
 .champion-icon {
-  width: 90px;
-  height: 90px;
+  width: 70px;
+  height: 70px;
 }
 
 .champion-banner {
