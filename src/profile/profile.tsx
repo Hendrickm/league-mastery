@@ -15,8 +15,6 @@ interface Props {
 }
 
 interface State {
-  summonerName: string,
-  region: string
   name: string,
   profileIconId: number,
   summonerLevel: number,
@@ -28,7 +26,6 @@ export default class Profile extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      ...props,
       name: '',
       profileIconId: 0,
       summonerLevel: 0,
@@ -37,23 +34,41 @@ export default class Profile extends Component<Props, State> {
     };
   }
 
+
   componentDidMount() {
-    const { summonerName, region } = this.state;
+    this.getSummoner();
+  }
+
+  componentDidUpdate(prevProps: Props) {
+    const { summonerName, region } = this.props;
+    if (summonerName !== prevProps.summonerName
+        || region !== prevProps.region) {
+      this.getSummoner();
+    }
+  }
+
+  getSummoner() {
+    const { summonerName, region } = this.props;
     const params = { summonerName, region };
     const url = `${API_PROXY}/summoners/by-name`;
     axios.get(url, { params }).then((res) => {
       this.setState({ ...res.data });
       this.getChampionsMastery();
+    }).catch((error) => {
+      console.log(error);
     });
   }
 
-  getChampionsMastery = () => {
-    const { region, id } = this.state;
+  getChampionsMastery() {
+    const { region } = this.props;
+    const { id } = this.state;
     const params = { region, id };
     const url = `${API_PROXY}/champion-mastery/by-summoner`;
 
     axios.get(url, { params }).then((res) => {
       this.setState({ championList: res.data });
+    }).catch((error) => {
+      console.log(error);
     });
   }
 
