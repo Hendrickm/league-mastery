@@ -1,10 +1,8 @@
 import React from 'react';
 
-import ChampionBanner from './championBanner';
-
-import { CHAMPION_KEYS, CHAMPION_NAMES } from '../assets/data';
-
+import { getChampionKey, getChampionName } from '../utils/utils';
 import { Champion } from '../utils/types';
+import ChampionBanner from './championBanner';
 
 interface Props {
   champion: Champion;
@@ -12,10 +10,6 @@ interface Props {
 
 export default (props: Props) => {
   const { champion: { championId, championPoints, championLevel } } = props;
-
-  const getChampionKey = () => CHAMPION_KEYS.find((c) => c.id === championId)?.key;
-
-  const getChampionName = () => CHAMPION_NAMES.find((c) => c.id === championId)?.name;
 
   const getChampionClass = () => {
     let classes = 'champion';
@@ -30,8 +24,8 @@ export default (props: Props) => {
   return (
     <div key={championId} className="champion-container">
       <div className={`${getChampionClass()}`}>
-        <div className="champion-name">{getChampionName()}</div>
-        <img className="champion-icon" src={`http://ddragon.leagueoflegends.com/cdn/10.3.1/img/champion/${getChampionKey()}.png`} alt={championId.toString()} />
+        <div className="champion-name">{getChampionName(championId)}</div>
+        <img className="champion-icon" src={`http://ddragon.leagueoflegends.com/cdn/10.3.1/img/champion/${getChampionKey(championId)}.png`} alt={championId.toString()} />
         <div className="champion-name">{championPoints}</div>
       </div>
       <ChampionBanner championLevel={championLevel} />

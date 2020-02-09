@@ -1,14 +1,13 @@
 import React, { Component, ChangeEvent } from 'react';
 import axios from 'axios';
-import ChampionList from './championList';
 
 import './profile.css';
+import { API_PROXY } from '../env/enviroments';
+import { getChampionName } from '../utils/utils';
 import { Champion } from '../utils/types';
 
-import { CHAMPION_NAMES } from '../assets/data';
-import { API_PROXY } from '../env/enviroments';
-
 import Header from './header';
+import ChampionList from './championList';
 
 interface Props {
   summonerName: string,
@@ -64,15 +63,13 @@ export default class Profile extends Component<Props, State> {
     let sortedChampionList = [];
     if (sort === 'name') {
       sortedChampionList = championList.sort((a, b) => (
-        this.getChampionName(a.championId).localeCompare(this.getChampionName(b.championId))));
+        getChampionName(a.championId).localeCompare(getChampionName(b.championId))));
     } else {
       sortedChampionList = championList
         .sort((a, b) => ((a[sort] > b[sort]) ? -1 : 1));
     }
     this.setState({ championList: sortedChampionList });
   }
-
-  getChampionName = (championId: number) => CHAMPION_NAMES.find((c) => c.id === championId)?.name || '' ;
 
   render() {
     const {

@@ -149,11 +149,11 @@ export const CHAMPION_KEYS = [
 ];
 
 export const CHAMPION_NAMES = [
-  { id: 62, name: 'Wukong' },
-  { id: 24, name: 'Jax' },
   { id: 9, name: 'Fiddlesticks' },
   { id: 35, name: 'Shaco' },
+  { id: 62, name: 'Wukong' },
   { id: 19, name: 'Warwick' },
+  { id: 24, name: 'Jax' },
   { id: 498, name: 'Xayah' },
   { id: 76, name: 'Nidalee' },
   { id: 143, name: 'Zyra' },
@@ -224,7 +224,7 @@ export const CHAMPION_NAMES = [
   { id: 75, name: 'Nasus' },
   { id: 141, name: 'Kayn' },
   { id: 4, name: 'Twisted Fate' },
-  { id: 31, name: 'Cho gath' },
+  { id: 31, name: 'Cho\'gath' },
   { id: 77, name: 'Udyr' },
   { id: 236, name: 'Lucian' },
   { id: 427, name: 'Ivern' },
@@ -285,7 +285,7 @@ export const CHAMPION_NAMES = [
   { id: 79, name: 'Gragas' },
   { id: 238, name: 'Zed' },
   { id: 254, name: 'Vi' },
-  { id: 96, name: 'Kog Maw' },
+  { id: 96, name: 'Kog\'Maw' },
   { id: 103, name: 'Ahri' },
   { id: 133, name: 'Quinn' },
   { id: 7, name: 'Leblanc' },
