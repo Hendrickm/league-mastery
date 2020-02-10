@@ -7,7 +7,7 @@ import { getChampionName } from '../utils/utils';
 import { Champion } from '../utils/types';
 
 import Header from './header';
-import ChampionList from './championList';
+import ChampionList from '../champions/championList';
 
 interface Props {
   summonerName: string,

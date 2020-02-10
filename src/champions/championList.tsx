@@ -1,5 +1,9 @@
 import React, { ChangeEvent } from 'react';
 import { Container } from 'react-bootstrap';
+
+
+import './champions.css';
+
 import ChampionIcon from './championIcon';
 import SelectSort from '../components/selectSort';
 
