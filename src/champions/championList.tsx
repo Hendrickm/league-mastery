@@ -10,14 +10,14 @@ import SelectSort from '../components/selectSort';
 import { Champion } from '../utils/types';
 
 interface Props {
-  championList: Array<Champion>
+  champions: Array<Champion>
   handleSelectSort: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export default (props: Props) => {
-  const { championList, handleSelectSort } = props;
+  const { champions, handleSelectSort } = props;
 
-  const renderChampions = () => championList.map((champion) => (
+  const renderChampions = () => champions.map((champion) => (
     <ChampionIcon key={champion.championId} champion={champion} />
   ));
 

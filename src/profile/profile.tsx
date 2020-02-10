@@ -19,7 +19,7 @@ interface State {
   profileIconId: number,
   summonerLevel: number,
   id: string,
-  championList: Array<Champion>;
+  champions: Array<Champion>;
 }
 
 export default class Profile extends Component<Props, State> {
@@ -30,7 +30,7 @@ export default class Profile extends Component<Props, State> {
       profileIconId: 0,
       summonerLevel: 0,
       id: '',
-      championList: [],
+      champions: [],
     };
   }
 
@@ -66,7 +66,7 @@ export default class Profile extends Component<Props, State> {
     const url = `${API_PROXY}/champion-mastery/by-summoner`;
 
     axios.get(url, { params }).then((res) => {
-      this.setState({ championList: res.data });
+      this.setState({ champions: res.data });
     }).catch((error) => {
       console.log(error);
     });
@@ -74,21 +74,21 @@ export default class Profile extends Component<Props, State> {
 
   handleSelectSort = (e: ChangeEvent<HTMLInputElement>) => {
     const sort: string = e.target.value;
-    const { championList } = this.state;
+    const { champions } = this.state;
     let sortedChampionList = [];
     if (sort === 'name') {
-      sortedChampionList = championList.sort((a, b) => (
+      sortedChampionList = champions.sort((a, b) => (
         getChampionName(a.championId).localeCompare(getChampionName(b.championId))));
     } else {
-      sortedChampionList = championList
+      sortedChampionList = champions
         .sort((a, b) => ((a[sort] > b[sort]) ? -1 : 1));
     }
-    this.setState({ championList: sortedChampionList });
+    this.setState({ champions: sortedChampionList });
   }
 
   render() {
     const {
-      profileIconId, name, summonerLevel, championList,
+      profileIconId, name, summonerLevel, champions,
     } = this.state;
     return (
       <div>
@@ -97,7 +97,7 @@ export default class Profile extends Component<Props, State> {
           name={name}
           summonerLevel={summonerLevel}
         />
-        <ChampionList championList={championList} handleSelectSort={this.handleSelectSort} />
+        <ChampionList champions={champions} handleSelectSort={this.handleSelectSort} />
 
       </div>
     );
