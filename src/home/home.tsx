@@ -5,8 +5,8 @@ import InputSearch from '../components/inputSearch';
 
 
 export default () => (
-  <div className="input-search">
-    <h1>League Mastery</h1>
+  <div className="home-container">
+    <h1 className="home-title">League Mastery</h1>
     <InputSearch />
   </div>
 );

@@ -10,7 +10,8 @@ body {
 }
 
 .form-control {
-  background: #1b2838;;
+  background: #1b2838;
+  border: 1px solid rgba(158, 175, 208, 0.3);
   color: white;
 }
 
@@ -20,7 +21,7 @@ body {
 }
 
 .form-control option {
-  background:#1b2838;
+  background:rgb(24, 35, 56);;
 }
 
 .jumbotron-fluid {
