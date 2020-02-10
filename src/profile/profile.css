@@ -5,6 +5,24 @@
   border: 3px solid gold;
 }
 
+body {
+  background: rgb(32, 43, 67);
+}
+
+.form-control {
+  background: #1b2838;;
+  color: white;
+}
+
+.form-control:focus {
+  background: #1b2838;;
+  color: white;
+}
+
+.form-control option {
+  background:#1b2838;
+}
+
 .jumbotron-fluid {
   background-image: url("../assets/background.jpeg");
   background-color: #cccccc;
@@ -51,7 +69,6 @@
 .champion-grid {
   display: flex;
   flex-wrap: wrap;
-
 }
 
 .champion-grid-header {
@@ -60,7 +77,7 @@
 }
 
 .champion-grid-title {
-  color: #555;
+  color: #fff;
 }
 
 .champion-container {
@@ -71,30 +88,15 @@
 }
 
 .champion {
-  width: 100px;
+  width: 90px;
   height: 110px;
-  border: 1px solid #ccc;
-  background-color: #Dddd;
+  border: 1px solid #3339;
+  background: rgb(24, 35, 56);
   flex-direction: column;
   text-align: center;
   justify-content: center;
   margin-right: 10px;
-}
-
-.m7 {
-  background-color: #edfffd;
-}
-
-.m6 {
-  background-color: #ede9ff;
-}
-
-.m5 {
-  background-color: #f3e1e1;
-}
-
-.m4 {
-  background-color: #f2f1de;
+  color: #fff;
 }
 
 .champion-name {
