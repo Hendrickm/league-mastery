@@ -1,13 +1,15 @@
 import React, { Component, ChangeEvent } from 'react';
 import axios from 'axios';
+import { Container, Tabs, Tab } from 'react-bootstrap';
 
 import './profile.css';
 import { API_PROXY } from '../env/enviroments';
 import { getChampionName } from '../utils/utils';
-import { Champion } from '../utils/types';
+import { Champion, Match } from '../utils/types';
 
 import Header from './header';
 import ChampionList from '../champions/championList';
+import MatchList from '../matches/matchList';
 
 interface Props {
   summonerName: string,
@@ -19,7 +21,9 @@ interface State {
   profileIconId: number,
   summonerLevel: number,
   id: string,
+  accountId: string,
   champions: Array<Champion>;
+  matches: Array<Match>;
 }
 
 export default class Profile extends Component<Props, State> {
@@ -30,7 +34,9 @@ export default class Profile extends Component<Props, State> {
       profileIconId: 0,
       summonerLevel: 0,
       id: '',
+      accountId: '',
       champions: [],
+      matches: [],
     };
   }
 
@@ -54,6 +60,7 @@ export default class Profile extends Component<Props, State> {
     axios.get(url, { params }).then((res) => {
       this.setState({ ...res.data });
       this.getChampionsMastery();
+      this.getMatches();
     }).catch((error) => {
       console.log(error);
     });
@@ -67,6 +74,19 @@ export default class Profile extends Component<Props, State> {
 
     axios.get(url, { params }).then((res) => {
       this.setState({ champions: res.data });
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+
+  getMatches() {
+    const { region } = this.props;
+    const { accountId } = this.state;
+    const params = { region, accountId };
+    const url = `${API_PROXY}/matchlists/by-account`;
+
+    axios.get(url, { params }).then((res) => {
+      this.setState({ matches: res.data.matches });
     }).catch((error) => {
       console.log(error);
     });
@@ -88,7 +108,7 @@ export default class Profile extends Component<Props, State> {
 
   render() {
     const {
-      profileIconId, name, summonerLevel, champions,
+      profileIconId, name, summonerLevel, champions, matches,
     } = this.state;
     return (
       <div>
@@ -97,7 +117,17 @@ export default class Profile extends Component<Props, State> {
           name={name}
           summonerLevel={summonerLevel}
         />
-        <ChampionList champions={champions} handleSelectSort={this.handleSelectSort} />
+        <Container>
+          <Tabs defaultActiveKey="matches" id="uncontrolled-tab-example">
+            <Tab eventKey="matches" title="Match History">
+              <MatchList matches={matches} />
+            </Tab>
+            <Tab eventKey="champions" title="Champions">
+              <ChampionList champions={champions} handleSelectSort={this.handleSelectSort} />
+            </Tab>
+          </Tabs>
+
+        </Container>
 
       </div>
     );

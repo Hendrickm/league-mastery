@@ -22,7 +22,7 @@ export default (props: Props) => {
   ));
 
   return (
-    <Container>
+    <div>
       <div className="champion-grid-header">
         <h3 className="champion-grid-title">Champion masteries</h3>
         <SelectSort handleSelectSort={handleSelectSort} />
@@ -30,6 +30,6 @@ export default (props: Props) => {
       <div className="champion-grid ">
         {renderChampions()}
       </div>
-    </Container>
+    </div>
   );
 };

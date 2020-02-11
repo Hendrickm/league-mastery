@@ -10,3 +10,14 @@ export interface Champion {
   summonerId: string
   [key: string]: string | boolean | number;
 }
+
+export interface Match {
+  platformId: string,
+  gameId: number,
+  champion: number,
+  queue: number,
+  season: number,
+  timestamp: number,
+  role: string,
+  lane: string,
+}
