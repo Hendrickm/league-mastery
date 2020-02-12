@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './home.css';
-import InputSearch from '../components/inputSearch';
+import InputSearch from '../shared/inputSearch';
 
 
 export default () => (

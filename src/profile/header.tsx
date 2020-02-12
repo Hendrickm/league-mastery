@@ -2,7 +2,7 @@ import React from 'react';
 import { Jumbotron } from 'react-bootstrap';
 
 import SummonerIcon from './summonerIcon';
-import InputSearch from '../components/inputSearch';
+import InputSearch from '../shared/inputSearch';
 
 interface Props {
   name: string,

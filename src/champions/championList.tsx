@@ -1,11 +1,9 @@
 import React, { ChangeEvent } from 'react';
-import { Container } from 'react-bootstrap';
-
 
 import './champions.css';
 
-import ChampionIcon from './championIcon';
-import SelectSort from '../components/selectSort';
+import ChampionItem from './championItem';
+import SelectSort from '../shared/selectSort';
 
 import { Champion } from '../utils/types';
 
@@ -18,7 +16,7 @@ export default (props: Props) => {
   const { champions, handleSelectSort } = props;
 
   const renderChampions = () => champions.map((champion) => (
-    <ChampionIcon key={champion.championId} champion={champion} />
+    <ChampionItem key={champion.championId} champion={champion} />
   ));
 
   return (

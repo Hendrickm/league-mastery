@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 
-import { getChampionKey, getChampionName } from '../utils/utils';
+import { getChampionKey } from '../utils/utils';
 
 import './matches.css';
 
