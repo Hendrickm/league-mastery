@@ -40,14 +40,18 @@ export default class MatchItem extends Component<Props, State> {
     });
   }
 
+  getParticipant = (summonerName: string, match: Match) => {
+    const participantId = match.participantIdentities.find(
+      (partIdent) => partIdent.player.summonerName.toLowerCase() === summonerName.toLowerCase(),
+    )?.participantId;
+    return match.participants.find((part) => part.participantId === participantId);
+  }
+
   render() {
     const { champion, summonerName } = this.props;
     const { match } = this.state;
     if (match) {
-      const participantId = match.participantIdentities.find(
-        (partIdent) => partIdent.player.summonerName.toLowerCase() === summonerName.toLowerCase(),
-      )?.participantId;
-      const participant = match.participants.find((part) => part.participantId === participantId);
+      const participant = this.getParticipant(summonerName, match);
       return (
         <div className="match">
           <ChampionIcon championId={champion} />

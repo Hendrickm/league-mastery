@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ItemIcon from '../shared/itemIcon';
+import ItemIcon from './itemIcon';
 
 interface Props {
   item0?: number;
