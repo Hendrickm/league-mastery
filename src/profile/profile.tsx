@@ -107,6 +107,7 @@ export default class Profile extends Component<Props, State> {
   }
 
   render() {
+    const { region, summonerName } = this.props;
     const {
       profileIconId, name, summonerLevel, champions, matches,
     } = this.state;
@@ -120,7 +121,7 @@ export default class Profile extends Component<Props, State> {
         <Container>
           <Tabs defaultActiveKey="matches" id="uncontrolled-tab-example">
             <Tab eventKey="matches" title="Match History">
-              <MatchList matches={matches} />
+              <MatchList matches={matches} region={region} summonerName={summonerName} />
             </Tab>
             <Tab eventKey="champions" title="Champions">
               <ChampionList champions={champions} handleSelectSort={this.handleSelectSort} />

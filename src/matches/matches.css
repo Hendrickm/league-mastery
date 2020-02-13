@@ -14,5 +14,34 @@
   display: flex;
   align-items: center;
   border-left: 5px solid rgb(73, 180, 255);
-  ;
+}
+
+.spell-container {
+  margin-left: 5px;
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.spell-icon {
+  width: 30px;
+  height: 30px;
+  margin-bottom: 5px;
+}
+
+.itens-container {
+  display: flex;
+}
+
+.item-icon {
+  width: 50px;
+  height: 50px;
+  margin-right: 5px;
+  
+}
+
+.empty-icon {
+  width: 50px;
+  height: 50px;
+  margin-right: 5px;
 }

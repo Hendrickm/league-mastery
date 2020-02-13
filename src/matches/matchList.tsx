@@ -5,18 +5,26 @@ import { getChampionKey } from '../utils/utils';
 
 import './matches.css';
 
+import MatchContainer from './matchContainer';
 import { Match } from '../utils/types';
 
 interface Props {
   matches: Array<Match>;
+  region: string;
+  summonerName: string;
 }
 
 export default (props: Props) => {
-  const { matches } = props;
+  const { matches, region, summonerName } = props;
 
   const renderMatches = () => matches.map((match) => (
-    <div className="match" key={match.gameId}>
-      <img className="champion-icon" src={`http://ddragon.leagueoflegends.com/cdn/10.3.1/img/champion/${getChampionKey(match.champion)}.png`} alt={match.champion.toString()} />
+    <div key={match.gameId}>
+      <MatchContainer
+        gameId={match.gameId}
+        champion={match.champion}
+        region={region}
+        summonerName={summonerName}
+      />
     </div>
   ));
 
