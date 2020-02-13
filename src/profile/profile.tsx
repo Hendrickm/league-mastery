@@ -58,7 +58,7 @@ export default class Profile extends Component<Props, State> {
     const params = { summonerName, region };
     const url = `${API_PROXY}/summoners/by-name`;
     axios.get(url, { params }).then((res) => {
-      this.setState({ ...res.data });
+      this.setState({ ...res.data, matches: [] });
       this.getChampionsMastery();
       this.getMatches();
     }).catch((error) => {

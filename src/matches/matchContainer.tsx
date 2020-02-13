@@ -8,6 +8,8 @@ import { API_PROXY } from '../env/enviroments';
 import ChampionIcon from '../shared/championIcon';
 import MatchSpells from './matchSpells';
 import MatchItens from './matchItens';
+import MatchStats from './matchStats';
+import MatchTime from './matchTime';
 
 interface Props {
   gameId: number;
@@ -47,34 +49,33 @@ export default class MatchItem extends Component<Props, State> {
     return match.participants.find((part) => part.participantId === participantId);
   }
 
+
   render() {
     const { champion, summonerName } = this.props;
     const { match } = this.state;
     if (match) {
       const participant = this.getParticipant(summonerName, match);
-      return (
-        <div className="match">
-          <ChampionIcon championId={champion} />
-          <MatchSpells
-            spell1Id={participant?.spell1Id}
-            spell2Id={participant?.spell2Id}
-          />
-          <MatchItens
-            item0={participant?.stats.item0}
-            item1={participant?.stats.item1}
-            item2={participant?.stats.item2}
-            item3={participant?.stats.item3}
-            item4={participant?.stats.item4}
-            item5={participant?.stats.item5}
-            item6={participant?.stats.item6}
-          />
-        </div>
-      );
+      if (participant) {
+        const { stats } = participant;
+        const { mapId, gameDuration, gameCreation } = match;
+        return (
+          <div className={`match ${stats.win ? 'border-win' : 'border-lose'}`}>
+            <div className="champion-spells">
+              <ChampionIcon championId={champion} />
+              <MatchSpells
+                spell1Id={participant.spell1Id}
+                spell2Id={participant.spell2Id}
+              />
+            </div>
+            <MatchStats stats={stats} />
+            <MatchItens stats={stats} />
+            <MatchTime mapId={mapId} gameDuration={gameDuration} gameCreation={gameCreation} />
+          </div>
+        );
+      }
     }
     return (
-      <div className="match">
-        <ChampionIcon championId={champion} />
-      </div>
+      <div className="match" />
     );
   }
 }

@@ -1,20 +1,16 @@
 import React from 'react';
-
+import { Stats } from '../utils/types';
 import ItemIcon from './itemIcon';
 
 interface Props {
-  item0?: number;
-  item1?: number;
-  item2?: number;
-  item3?: number;
-  item4?: number;
-  item5?: number;
-  item6?: number;
+  stats: Stats
 }
 
 export default (props: Props) => {
   const {
-    item0, item1, item2, item3, item4, item5, item6,
+    stats: {
+      item0, item1, item2, item3, item4, item5, item6,
+    },
   } = props;
 
   return (
