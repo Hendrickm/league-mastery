@@ -2,21 +2,10 @@ import React, { Component, ChangeEvent } from 'react';
 import {
   Form, Col, Button,
 } from 'react-bootstrap';
+import './inputSearch.css';
 import { Link } from 'react-router-dom';
 
-const REGIONS = [
-  { label: 'BR', value: 'br1' },
-  { label: 'RU', value: 'ru' },
-  { label: 'KR', value: 'kr' },
-  { label: 'OCE', value: 'oc1' },
-  { label: 'JP', value: 'jp1' },
-  { label: 'NA', value: 'na1' },
-  { label: 'EUN', value: 'eun1' },
-  { label: 'EUW', value: 'euw2' },
-  { label: 'TUR', value: 'tr1' },
-  { label: 'LAN', value: 'la1' },
-  { label: 'LAS', value: 'la2' },
-];
+import { REGIONS } from '../utils/data';
 
 interface State {
   summonerName: string,
@@ -51,11 +40,6 @@ export default class InputSearch extends Component<Props, State> {
     this.setState({ region: e.target.value });
   }
 
-  handleClickSearch = () => {
-    // const { summonerName, region } = this.state;
-    // const url = `${API_PROXY}https://${region}.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerName}?api_key=${API_KEY}`;
-    // axios.get(url).then((res) => console.log(res.data));
-  }
 
   render() {
     const { summonerName, region } = this.state;

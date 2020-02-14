@@ -9,24 +9,10 @@ body {
   background: #202B43
 }
 
-.form-control {
-  background: #1b2838;
-  border: 1px solid rgba(158, 175, 208, 0.3);
-  color: white;
-}
-
-.form-control:focus {
-  background: #1b2838;;
-  color: white;
-}
-
-.form-control option {
-  background:#182338;;
-}
-
 .jumbotron-fluid {
   background-image: url("../assets/background.jpeg");
   background-color: #cccccc;
+  margin-bottom: 0px;
   height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -47,7 +33,6 @@ body {
   justify-content: flex-end;
 }
 
-
 .summoner-icon-container {
   display: flex;
   justify-content: center;
@@ -67,6 +52,39 @@ body {
   font-size: 2em;
 }
 
+.nav {
+  background: #1b2838;
+}
+
+
 .nav-tabs {
   margin-bottom: 20px;
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0,0.15);
+  display: flex;
+  justify-content: center;
+}
+
+.nav-tabs a {
+  background-color: none;
+  color: #999;
+  
+}
+
+.nav-tabs a.nav-item.nav-link.active {
+  border: none;
+  border-bottom: 4px solid #5C4C9F;
+  background: none;
+  color: #fff;
+  outline: none;
+}
+
+.nav-tabs a:hover {
+  border: none;
+  outline: none;
+}
+
+.nav-tabs a:active {
+  border: none;
+  outline: none;
 }

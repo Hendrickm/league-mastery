@@ -1,8 +1,6 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 
-import { getChampionKey } from '../utils/utils';
-
 import './matches.css';
 
 import MatchContainer from './matchContainer';
@@ -29,7 +27,7 @@ export default (props: Props) => {
   ));
 
   return (
-    <>
+    <Container>
       <div className="champion-grid-header">
         <h3 className="champion-grid-title">Match History</h3>
       </div>
@@ -37,6 +35,6 @@ export default (props: Props) => {
         {renderMatches()}
 
       </div>
-    </>
+    </Container>
   );
 };

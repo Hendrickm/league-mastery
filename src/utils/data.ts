@@ -371,6 +371,20 @@ export const MAPS = [
   },
 ];
 
+export const REGIONS = [
+  { label: 'BR', value: 'br1' },
+  { label: 'RU', value: 'ru' },
+  { label: 'KR', value: 'kr' },
+  { label: 'OCE', value: 'oc1' },
+  { label: 'JP', value: 'jp1' },
+  { label: 'NA', value: 'na1' },
+  { label: 'EUN', value: 'eun1' },
+  { label: 'EUW', value: 'euw2' },
+  { label: 'TUR', value: 'tr1' },
+  { label: 'LAN', value: 'la1' },
+  { label: 'LAS', value: 'la2' },
+];
+
 export const SUMMONER_SPELLS: Key = {
   1: 'SummonerBoost',
   3: 'SummonerExhaust',

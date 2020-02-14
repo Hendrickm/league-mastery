@@ -1,6 +1,6 @@
 import React, { Component, ChangeEvent } from 'react';
 import axios from 'axios';
-import { Container, Tabs, Tab } from 'react-bootstrap';
+import { Tabs, Tab } from 'react-bootstrap';
 
 import './profile.css';
 import { API_PROXY } from '../env/enviroments';
@@ -118,18 +118,14 @@ export default class Profile extends Component<Props, State> {
           name={name}
           summonerLevel={summonerLevel}
         />
-        <Container>
-          <Tabs defaultActiveKey="matches" id="uncontrolled-tab-example">
-            <Tab eventKey="matches" title="Match History">
-              <MatchList matches={matches} region={region} summonerName={summonerName} />
-            </Tab>
-            <Tab eventKey="champions" title="Champions">
-              <ChampionList champions={champions} handleSelectSort={this.handleSelectSort} />
-            </Tab>
-          </Tabs>
-
-        </Container>
-
+        <Tabs defaultActiveKey="matches" id="uncontrolled-tab-example">
+          <Tab eventKey="matches" title="Match History">
+            <MatchList matches={matches} region={region} summonerName={summonerName} />
+          </Tab>
+          <Tab eventKey="champions" title="Champions">
+            <ChampionList champions={champions} handleSelectSort={this.handleSelectSort} />
+          </Tab>
+        </Tabs>
       </div>
     );
   }
