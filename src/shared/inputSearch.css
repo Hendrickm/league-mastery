@@ -1,19 +1,8 @@
 
-.form-container {
-  background: #1b2838;
-  border: 1px solid rgba(158, 175, 208, 0.3);
-  border-radius: 5px;
-  width: 500px;
-}
-
 .form-control {
   background: #1b2838;
   border: 1px solid rgba(158, 175, 208, 0.3);
   color: white;
-}
-
-.form-control.input-text{
-  border: none;
 }
 
 .form-control:focus {
