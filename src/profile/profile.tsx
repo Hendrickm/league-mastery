@@ -8,8 +8,8 @@ import { getChampionName } from '../utils/utils';
 import { Champion, Match } from '../utils/types';
 
 import Header from './header';
-import ChampionList from '../champions/championList';
-import MatchList from '../matches/matchList';
+import ChampionMastery from '../championMastery/championMastery';
+import MatchHistory from '../matchHistory/matchHistory';
 
 interface Props {
   summonerName: string,
@@ -120,10 +120,10 @@ export default class Profile extends Component<Props, State> {
         />
         <Tabs defaultActiveKey="matches" id="uncontrolled-tab-example">
           <Tab eventKey="matches" title="Match History">
-            <MatchList matches={matches} region={region} summonerName={summonerName} />
+            <MatchHistory matches={matches} region={region} summonerName={summonerName} />
           </Tab>
           <Tab eventKey="champions" title="Champions">
-            <ChampionList champions={champions} handleSelectSort={this.handleSelectSort} />
+            <ChampionMastery champions={champions} handleSelectSort={this.handleSelectSort} />
           </Tab>
         </Tabs>
       </div>

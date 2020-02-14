@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 
-import './matches.css';
+import './matchHistory.css';
 
 import MatchContainer from './matchContainer';
 import { Match } from '../utils/types';

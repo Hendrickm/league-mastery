@@ -1,7 +1,7 @@
 import React, { ChangeEvent } from 'react';
 import { Container } from 'react-bootstrap';
 
-import './champions.css';
+import './championMastery.css';
 
 import ChampionItem from './championItem';
 import SelectSort from '../shared/selectSort';
