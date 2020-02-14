@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
+import { Container, Button } from 'react-bootstrap';
 
 import './matchHistory.css';
 
@@ -10,12 +10,15 @@ interface Props {
   matches: Array<Match>;
   region: string;
   summonerName: string;
+  handleLoadNewPage: () => void;
 }
 
 export default (props: Props) => {
-  const { matches, region, summonerName } = props;
+  const {
+    matches, region, summonerName, handleLoadNewPage,
+  } = props;
 
-  const renderMatches = () => matches.map((match) => (
+  const renderMatches = () => matches.map((match, index) => (
     <div key={match.gameId}>
       <MatchContainer
         gameId={match.gameId}
@@ -33,7 +36,7 @@ export default (props: Props) => {
       </div>
       <div className="match-grid">
         {renderMatches()}
-
+        <Button variant="primary" onClick={handleLoadNewPage}>Carregar mais</Button>
       </div>
     </Container>
   );

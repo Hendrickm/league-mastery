@@ -24,20 +24,27 @@ interface State {
   accountId: string,
   champions: Array<Champion>;
   matches: Array<Match>;
+  beginIndex: number;
+  endIndex: number;
+
 }
 
 export default class Profile extends Component<Props, State> {
+  initialState: State = {
+    name: '',
+    profileIconId: 0,
+    summonerLevel: 0,
+    id: '',
+    accountId: '',
+    champions: [],
+    matches: [],
+    beginIndex: 0,
+    endIndex: 10,
+  };
+
   constructor(props: Props) {
     super(props);
-    this.state = {
-      name: '',
-      profileIconId: 0,
-      summonerLevel: 0,
-      id: '',
-      accountId: '',
-      champions: [],
-      matches: [],
-    };
+    this.state = { ...this.initialState };
   }
 
 
@@ -49,7 +56,7 @@ export default class Profile extends Component<Props, State> {
     const { summonerName, region } = this.props;
     if (summonerName !== prevProps.summonerName
         || region !== prevProps.region) {
-      this.getSummoner();
+      this.restartState();
     }
   }
 
@@ -81,12 +88,16 @@ export default class Profile extends Component<Props, State> {
 
   getMatches() {
     const { region } = this.props;
-    const { accountId } = this.state;
-    const params = { region, accountId };
+    const {
+      accountId, beginIndex, endIndex, matches,
+    } = this.state;
+    const params = {
+      region, accountId, beginIndex, endIndex,
+    };
     const url = `${API_PROXY}/matchlists/by-account`;
 
     axios.get(url, { params }).then((res) => {
-      this.setState({ matches: res.data.matches });
+      this.setState({ matches: matches.concat(res.data.matches) });
     }).catch((error) => {
       console.log(error);
     });
@@ -106,6 +117,18 @@ export default class Profile extends Component<Props, State> {
     this.setState({ champions: sortedChampionList });
   }
 
+  handleLoadNewPage = () => {
+    const { beginIndex, endIndex } = this.state;
+    this.setState({ beginIndex: beginIndex + 10, endIndex: endIndex + 10 },
+      () => this.getMatches());
+  }
+
+  restartState() {
+    this.setState({ ...this.initialState }, () => this.getSummoner());
+    this.getSummoner();
+  }
+
+
   render() {
     const { region, summonerName } = this.props;
     const {
@@ -120,12 +143,21 @@ export default class Profile extends Component<Props, State> {
         />
         <Tabs defaultActiveKey="matches" id="uncontrolled-tab-example">
           <Tab eventKey="matches" title="Match History">
-            <MatchHistory matches={matches} region={region} summonerName={summonerName} />
+            <MatchHistory
+              matches={matches}
+              region={region}
+              summonerName={summonerName}
+              handleLoadNewPage={this.handleLoadNewPage}
+            />
           </Tab>
           <Tab eventKey="champions" title="Champions">
-            <ChampionMastery champions={champions} handleSelectSort={this.handleSelectSort} />
+            <ChampionMastery
+              champions={champions}
+              handleSelectSort={this.handleSelectSort}
+            />
           </Tab>
         </Tabs>
+
       </div>
     );
   }

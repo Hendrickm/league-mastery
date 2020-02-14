@@ -18,7 +18,7 @@ export default (props: Props) => {
       <div className="champion">
         <div className="champion-name">{getChampionName(championId)}</div>
         <ChampionIcon championId={championId} />
-        <div className="champion-name">{championPoints}</div>
+        <div className="champion-name">{championPoints.toLocaleString()}</div>
       </div>
       <ChampionBanner championLevel={championLevel} />
     </div>
